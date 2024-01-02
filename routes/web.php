@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index.html');
+    return view('index');
+});
+
+Route::post('/table', function () {
+    return view('table');
 });
