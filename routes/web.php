@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\NamaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 Route::post('/table', function () {
     return view('table');
 });
+
+Route::post('/createName', [NamaController::class, 'store'])->name('/createName');

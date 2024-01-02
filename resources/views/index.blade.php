@@ -8,7 +8,8 @@
 </head>
 <body>
     <div class="container" id="container">
-        <form action="{{"route"}}" method="post" >
+        <form action="{{"createName"}}" method="post" >
+            @csrf
             <label for="teks"></label>
             <input type="text" name="teks" placeholder="Nama usia kota">
             <button type="submit">Submit</button>
