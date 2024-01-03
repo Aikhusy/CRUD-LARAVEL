@@ -46,7 +46,7 @@ class NamaController extends Controller
             'umur'=> $umur,
             'kota'=> $kota,
         ]);
-        return redirect()->route('index')->with('success', 'Post berhasil dibuat!');
+        return redirect()->route('showTable')->with('success', 'Post berhasil dibuat!');
     }
 
     /**
@@ -79,5 +79,13 @@ class NamaController extends Controller
     public function destroy(string $id)
     {
         //
+        $record = nama::find($id);
+
+        if ($record) {
+            $record->delete();
+            // You can also add a success message here if needed
+        }
+
+        return redirect()->route('showTable');
     }
 }

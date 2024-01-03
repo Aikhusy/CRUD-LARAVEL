@@ -17,8 +17,12 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::post('/table', function () {
+Route::get('/table', function () {
     return view('table');
-});
+})->name('table');
 
 Route::post('/createName', [NamaController::class, 'store'])->name('/createName');
+
+Route::get('/table',[NamaController::class, 'index'])->name('showTable');
+
+Route::post('/delete/{id}',[NamaController::class, 'destroy'])->name('deleteItem');
