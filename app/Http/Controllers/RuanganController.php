@@ -71,7 +71,6 @@ class RuanganController extends Controller
      */
     public function update(Request $request, Ruangan $ruangan)
     {
-        //
         $validatedData = $request->validate([
             'nama_ruangan' => 'required',
             'kode_ruangan' => 'required',
@@ -79,16 +78,12 @@ class RuanganController extends Controller
             'total_kursi' => 'required',
         ]);
     
-
-        $ruangan->fill($validatedData);
+        $ruangan->update($validatedData);
     
-
-        $ruangan->save();
-    
-
         return redirect()->route('ruangan.index')
             ->with('success', 'Data ruangan berhasil diperbarui');
     }
+    
 
     /**
      * Remove the specified resource from storage.

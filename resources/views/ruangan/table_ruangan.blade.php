@@ -6,6 +6,7 @@
                 <th>kode ruangan</th>
                 <th>tersedia</th>
                 <th>total kursi</th>
+                <th>edit</th>
             </tr>
         </thead>
         <tbody>
@@ -15,6 +16,7 @@
                     <td>{{ $item->kode_ruangan}}</td>
                     <td>{{ $item->sedang_ditempati }}</td>
                     <td>{{ $item->total_kursi }}</td>
+                    <td><a href="{{ route('ruangan.edit', ['ruangan' => $item->id]) }}">Edit</a></td>
                 </tr>
             @endforeach
         </tbody>
