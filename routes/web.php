@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NamaController;
+
+use App\Http\Controllers\RuanganController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,3 +28,10 @@ Route::post('/createName', [NamaController::class, 'store'])->name('/createName'
 Route::get('/table',[NamaController::class, 'index'])->name('showTable');
 
 Route::post('/delete/{id}',[NamaController::class, 'destroy'])->name('deleteItem');
+
+
+
+Route::get('/ruangan',[RuanganController::class,'index']);
+Route::get('/ruangan',[RuanganController::class,'create']);
+Route::post('/ruangan',[RuanganController::class,'store']);
+Route::get('/ruangan/{ruangan}',[RuanganController::class,'show']);
