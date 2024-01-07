@@ -15,7 +15,7 @@ class RuanganController extends Controller
         //
         $data=Ruangan::all();
 
-        return view('ruangan.table_ruangan')->with('data',$data);
+        return view('ruangan.table_ruangan')->with('ruangan',$data);
     }
 
     /**
@@ -35,7 +35,7 @@ class RuanganController extends Controller
         $validatedData = $request->validate([
             'nama_ruangan' => 'required',
             'kode_ruangan' => 'required',
-            'sedanga_ditempati' => 'required',
+            'apakah_ditempati' => 'required',
             'total_kursi' => 'required',
         ]);
 
