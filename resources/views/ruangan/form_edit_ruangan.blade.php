@@ -2,7 +2,6 @@
     <form action="{{ route('ruangan.update', ['ruangan' => $ruangan->id]) }}" method="post">
         @csrf
         @method('PATCH')
-        
         <label for="nama_ruangan">Nama Ruangan:</label>
         <input type="text" name="nama_ruangan" value="{{ $ruangan->nama_ruangan }}" required><br>
 

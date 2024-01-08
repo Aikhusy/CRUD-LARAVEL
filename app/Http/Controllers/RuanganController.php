@@ -71,13 +71,14 @@ class RuanganController extends Controller
      */
     public function update(Request $request, Ruangan $ruangan)
     {
+        
         $validatedData = $request->validate([
             'nama_ruangan' => 'required',
             'kode_ruangan' => 'required',
-            'sedang_ditempati' => 'required',
+            'apakah_ditempati' => 'required',
             'total_kursi' => 'required',
         ]);
-    
+        
         $ruangan->update($validatedData);
     
         return redirect()->route('ruangan.index')
@@ -91,7 +92,6 @@ class RuanganController extends Controller
     public function destroy(Ruangan $ruangan)
     {
         //
-
         $ruangan->delete();
         
         return redirect()->route('ruangan.index')
