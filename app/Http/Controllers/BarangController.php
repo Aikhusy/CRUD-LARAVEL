@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use Illuminate\Http\Request;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class BarangController extends Controller
 {
@@ -15,7 +16,7 @@ class BarangController extends Controller
         //
         $barang=Barang::all();
 
-        return view('barang.table_barang')->with($barang);
+        return view('barang.table_barang')->with('barang',$barang);
     }
 
     /**
@@ -33,6 +34,19 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         //
+        $validated_data=$request->validate([
+            'nama_barang'=>'required',
+            'id_rak'=>'required'
+        ]);
+
+        $barang=new Barang();
+
+        $barang->fill($validated_data);
+
+        $barang->save();
+
+        return redirect()->route('barang.index')->with('success','data berhasil disimpan');
+
     }
 
     /**
@@ -41,6 +55,7 @@ class BarangController extends Controller
     public function show(Barang $barang)
     {
         //
+        return view('barang.show_barang')->with('barang',$barang);
     }
 
     /**
@@ -49,6 +64,7 @@ class BarangController extends Controller
     public function edit(Barang $barang)
     {
         //
+        return view('barang.form_edit_barang')->with('barang',$barang);
     }
 
     /**
@@ -57,6 +73,8 @@ class BarangController extends Controller
     public function update(Request $request, Barang $barang)
     {
         //
+
+        
     }
 
     /**
