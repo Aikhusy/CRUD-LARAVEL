@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BarangController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NamaController;
 
@@ -32,3 +33,4 @@ Route::post('/delete/{id}',[NamaController::class, 'destroy'])->name('deleteItem
 
 
 Route::resource('ruangan', RuanganController::class);
+route::resource('barang',BarangController::class);

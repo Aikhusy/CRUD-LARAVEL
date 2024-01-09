@@ -13,6 +13,9 @@ class BarangController extends Controller
     public function index()
     {
         //
+        $barang=Barang::all();
+
+        return view('barang.table_barang')->with($barang);
     }
 
     /**
@@ -21,6 +24,7 @@ class BarangController extends Controller
     public function create()
     {
         //
+        return view('barang.form_create_barang');
     }
 
     /**
