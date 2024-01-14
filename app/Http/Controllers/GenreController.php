@@ -13,6 +13,8 @@ class GenreController extends Controller
     public function index()
     {
         //
+        $genres=genre::all();
+        return view('genre.table_genre',compact('genre'));
     }
 
     /**
@@ -21,6 +23,7 @@ class GenreController extends Controller
     public function create()
     {
         //
+        return view('genre.form_create_genre');
     }
 
     /**
@@ -61,5 +64,6 @@ class GenreController extends Controller
     public function destroy(genre $genre)
     {
         //
+        
     }
 }
