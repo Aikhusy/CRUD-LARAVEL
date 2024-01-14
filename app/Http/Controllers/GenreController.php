@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\genre;
+use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
 
 class GenreController extends Controller
@@ -32,6 +33,16 @@ class GenreController extends Controller
     public function store(Request $request)
     {
         //
+        $ValidatedData=$request->validate([
+            'nama_genre'=>'required',
+            'deskripsi_genre'=>'required'
+        ]);
+
+        $newGenres=new genre();
+        $newGenres->fill($ValidatedData);
+        $newGenres->save();
+
+        return redirect()->route('genre.index')-> with('success');
     }
 
     /**
@@ -40,6 +51,7 @@ class GenreController extends Controller
     public function show(genre $genre)
     {
         //
+        return view('genre.form_show_genre',compact('genre'));
     }
 
     /**
@@ -48,6 +60,7 @@ class GenreController extends Controller
     public function edit(genre $genre)
     {
         //
+        return view('genre.form_edit_genre',compact('genre'));
     }
 
     /**
@@ -56,6 +69,15 @@ class GenreController extends Controller
     public function update(Request $request, genre $genre)
     {
         //
+        $validatedData=$request->validate([
+            'nama_genre'=>'required',
+            'deskripsi_genre'=>'required'
+        ]);
+
+        $genre->update($validatedData);
+
+        return redirect()->route('genre.index')->with('success');
+
     }
 
     /**
@@ -64,6 +86,7 @@ class GenreController extends Controller
     public function destroy(genre $genre)
     {
         //
-        
+        $genre->delete();
+        return redirect()->route('genre.index')->with('success');
     }
 }
